@@ -7,12 +7,20 @@ async function instantiate(module, imports = {}) {
       encodedArray = __lowerTypedArray(Uint8Array, 9, 0, encodedArray) || __notnull();
       return __liftTypedArray(Uint8Array, exports.transform(encodedArray) >>> 0);
     },
+    getEncoded() {
+      // assembly/index/getEncoded() => ~lib/typedarray/Uint8Array
+      return __liftTypedArray(Uint8Array, exports.getEncoded() >>> 0);
+    },
+    newTransform(ptr, size) {
+      // assembly/index/newTransform(i32, i32) => ~lib/typedarray/Uint8Array
+      return __liftTypedArray(Uint8Array, exports.newTransform(ptr, size) >>> 0);
+    },
     testTransform() {
       // assembly/index/testTransform() => ~lib/typedarray/Uint8Array
       return __liftTypedArray(Uint8Array, exports.testTransform() >>> 0);
     },
     allocate(size) {
-      // assembly/index/allocate(i32) => usize
+      // assembly/index/allocate(usize) => usize
       return exports.allocate(size) >>> 0;
     },
   }, exports);
@@ -46,8 +54,9 @@ async function instantiate(module, imports = {}) {
 }
 export const {
   memory,
-  add,
   transform,
+  getEncoded,
+  newTransform,
   testTransform,
   allocate,
   myAbort
