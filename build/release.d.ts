@@ -1,26 +1,15 @@
 /** Exported memory */
 export declare const memory: WebAssembly.Memory;
 /**
- * assembly/index/add
- * @param a `i32`
- * @param b `i32`
+ * assembly/index/transform
+ * @param ptr `i32`
+ * @param size `i32`
  * @returns `i32`
  */
-export declare function add(a: number, b: number): number;
-/**
- * assembly/index/transform
- * @param encodedArray `~lib/typedarray/Uint8Array`
- * @returns `~lib/typedarray/Uint8Array`
- */
-export declare function transform(encodedArray: Uint8Array): Uint8Array;
-/**
- * assembly/index/testTransform
- * @returns `~lib/typedarray/Uint8Array`
- */
-export declare function testTransform(): Uint8Array;
+export declare function transform(ptr: number, size: number): number;
 /**
  * assembly/index/allocate
- * @param size `i32`
+ * @param size `usize`
  * @returns `usize`
  */
 export declare function allocate(size: number): number;

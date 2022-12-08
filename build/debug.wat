@@ -5,15 +5,15 @@
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
+ (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_i64_=>_none (func_subtype (param i32 i64) func))
  (type $i32_=>_i64 (func_subtype (param i32) (result i64) func))
- (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i64_i32_=>_i32 (func_subtype (param i64 i32) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i64_i32_=>_none (func_subtype (param i32 i64 i32) func))
  (type $i32_i32_i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_i32_i64_i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32 i32 i32 i64 i32 i32 i32) (result i32) func))
+ (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i64_=>_i32 (func_subtype (param i64) (result i32) func))
  (type $i32_i64_i32_i32_=>_none (func_subtype (param i32 i64 i32 i32) func))
  (type $i32_i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32 i32) (result i32) func))
@@ -41,15 +41,13 @@
  (global $~lib/native/ASC_RUNTIME i32 (i32.const 2))
  (global $~lib/as-proto/assembly/Protobuf/WRITER (mut i32) (i32.const 0))
  (global $~lib/as-proto/assembly/Protobuf/READER (mut i32) (i32.const 0))
- (global $assembly/index/inputMessage (mut i32) (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $assembly/index/encodedArray (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 4320))
- (global $~lib/memory/__data_end i32 (i32.const 4400))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 37168))
- (global $~lib/memory/__heap_base i32 (i32.const 37168))
+ (global $~lib/rt/__rtti_base i32 (i32.const 3120))
+ (global $~lib/memory/__data_end i32 (i32.const 3196))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 35964))
+ (global $~lib/memory/__heap_base i32 (i32.const 35964))
  (memory $0 1)
  (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -64,49 +62,32 @@
  (data (i32.const 476) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 508) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
  (data (i32.const 556) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 620) "\9c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\84\00\00\000\00x\00f\003\001\00d\00d\004\00e\00e\007\004\00e\001\00d\00b\00f\001\009\008\00a\005\003\00d\003\004\00d\009\005\000\007\002\004\005\001\000\00d\00f\00d\00f\004\005\00e\002\007\00a\000\00f\00c\00a\000\008\009\00c\00c\002\00d\00e\001\003\002\001\002\009\002\003\00\00\00\00\00\00\00\00\00")
- (data (i32.const 780) "\9c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\84\00\00\000\00x\00a\00e\004\005\001\00c\008\00c\009\00c\006\005\003\004\00d\00c\00a\009\003\00a\004\008\007\00e\005\00d\005\008\00d\000\00b\00b\00a\008\009\000\00e\009\007\004\002\00e\003\006\00e\007\005\001\001\00e\003\00a\003\00b\00b\00f\006\00a\007\00c\00c\003\007\00f\00\00\00\00\00\00\00\00\00")
- (data (i32.const 940) "l\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00T\00\00\000\00x\005\000\00d\001\00c\009\007\007\001\009\000\002\004\007\006\000\007\006\00e\00c\00f\00c\008\00b\002\00a\008\003\00a\00d\006\00b\009\003\005\005\00a\004\00c\009\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1052) "\9c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\84\00\00\000\00x\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\003\008\002\006\006\009\006\00a\00f\00e\004\007\00f\008\00b\009\006\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1212) "\9c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\84\00\00\000\00x\00d\00d\00f\002\005\002\00a\00d\001\00b\00e\002\00c\008\009\00b\006\009\00c\002\00b\000\006\008\00f\00c\003\007\008\00d\00a\00a\009\005\002\00b\00a\007\00f\001\006\003\00c\004\00a\001\001\006\002\008\00f\005\005\00a\004\00d\00f\005\002\003\00b\003\00e\00f\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1372) "\9c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\84\00\00\000\00x\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\005\003\00d\00e\008\00e\009\000\00e\002\004\00e\008\00f\006\00c\004\00d\00e\00e\000\006\009\003\009\00e\004\00e\00d\00f\00c\008\00a\000\007\003\008\006\003\00a\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1532) "\9c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\84\00\00\000\00x\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\007\004\00d\00e\005\00d\004\00f\00c\00b\00f\006\003\00e\000\000\002\009\006\00f\00d\009\005\00d\003\003\002\003\006\00b\009\007\009\004\000\001\006\006\003\001\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1692) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0c\00\00\00\d0\04\00\00p\05\00\00\10\06\00\00")
- (data (i32.const 1724) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
- (data (i32.const 1772) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1900) "\1c\00\00\00\00\00\00\00\00\00\00\00\0e\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1932) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1964) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1996) "\1c\00\00\00\00\00\00\00\00\00\00\00\0f\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2028) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2060) "\1c\00\00\00\03\00\00\00\00\00\00\00\11\00\00\00\0c\00\00\00\00\00\00\00\00\08\00\00\00\00\00\00")
- (data (i32.const 2092) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00d\00\00\00t\00o\00S\00t\00r\00i\00n\00g\00(\00)\00 \00r\00a\00d\00i\00x\00 \00a\00r\00g\00u\00m\00e\00n\00t\00 \00m\00u\00s\00t\00 \00b\00e\00 \00b\00e\00t\00w\00e\00e\00n\00 \002\00 \00a\00n\00d\00 \003\006\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2220) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00u\00t\00i\00l\00/\00n\00u\00m\00b\00e\00r\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 2284) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\000\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2316) "0\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\00")
- (data (i32.const 2716) "\1c\04\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\04\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\000\00a\000\00b\000\00c\000\00d\000\00e\000\00f\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\001\00a\001\00b\001\00c\001\00d\001\00e\001\00f\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\002\00a\002\00b\002\00c\002\00d\002\00e\002\00f\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\003\00a\003\00b\003\00c\003\00d\003\00e\003\00f\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\004\00a\004\00b\004\00c\004\00d\004\00e\004\00f\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\005\00a\005\00b\005\00c\005\00d\005\00e\005\00f\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\006\00a\006\00b\006\00c\006\00d\006\00e\006\00f\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\007\00a\007\00b\007\00c\007\00d\007\00e\007\00f\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\008\00a\008\00b\008\00c\008\00d\008\00e\008\00f\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\009\00a\009\00b\009\00c\009\00d\009\00e\009\00f\00a\000\00a\001\00a\002\00a\003\00a\004\00a\005\00a\006\00a\007\00a\008\00a\009\00a\00a\00a\00b\00a\00c\00a\00d\00a\00e\00a\00f\00b\000\00b\001\00b\002\00b\003\00b\004\00b\005\00b\006\00b\007\00b\008\00b\009\00b\00a\00b\00b\00b\00c\00b\00d\00b\00e\00b\00f\00c\000\00c\001\00c\002\00c\003\00c\004\00c\005\00c\006\00c\007\00c\008\00c\009\00c\00a\00c\00b\00c\00c\00c\00d\00c\00e\00c\00f\00d\000\00d\001\00d\002\00d\003\00d\004\00d\005\00d\006\00d\007\00d\008\00d\009\00d\00a\00d\00b\00d\00c\00d\00d\00d\00e\00d\00f\00e\000\00e\001\00e\002\00e\003\00e\004\00e\005\00e\006\00e\007\00e\008\00e\009\00e\00a\00e\00b\00e\00c\00e\00d\00e\00e\00e\00f\00f\000\00f\001\00f\002\00f\003\00f\004\00f\005\00f\006\00f\007\00f\008\00f\009\00f\00a\00f\00b\00f\00c\00f\00d\00f\00e\00f\00f\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 3772) "\\\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00H\00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\00\00\00\00\00")
- (data (i32.const 3868) "\1c\00\00\00\00\00\00\00\00\00\00\00\12\00\00\00\08\00\00\00\03\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 3900) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
- (data (i32.const 3964) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
- (data (i32.const 4028) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00U\00n\00p\00a\00i\00r\00e\00d\00 \00s\00u\00r\00r\00o\00g\00a\00t\00e\00\00\00\00\00\00\00\00\00")
- (data (i32.const 4092) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1c\00\00\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s\00")
- (data (i32.const 4140) "l\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\\\00\00\00~\00l\00i\00b\00/\00a\00s\00-\00p\00r\00o\00t\00o\00/\00a\00s\00s\00e\00m\00b\00l\00y\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00F\00i\00x\00e\00d\00R\00e\00a\00d\00e\00r\00.\00t\00s\00")
- (data (i32.const 4252) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00w\00i\00r\00e\00 \00t\00y\00p\00e\00 \00\00\00\00\00\00\00\00\00")
- (data (i32.const 4320) "\13\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02\01\00\00\02\t\00\00A\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04A\00\00\00\00\00\00")
- (table $0 4 4 funcref)
- (elem $0 (i32.const 1) $assembly/proto/Ethereum/EthereumLog.encode $assembly/proto/Ethereum/EthereumLog.decode $assembly/proto/EvmLog/EVMLog.encode)
- (export "add" (func $assembly/index/add))
- (export "testTransform" (func $assembly/index/testTransform))
+ (data (i32.const 620) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 716) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 748) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
+ (data (i32.const 796) "\1c\00\00\00\00\00\00\00\00\00\00\00\0e\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 828) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 860) "\1c\00\00\00\03\00\00\00\00\00\00\00\10\00\00\00\0c\00\00\00\00\00\00\00P\03\00\00\00\00\00\00")
+ (data (i32.const 892) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00d\00\00\00t\00o\00S\00t\00r\00i\00n\00g\00(\00)\00 \00r\00a\00d\00i\00x\00 \00a\00r\00g\00u\00m\00e\00n\00t\00 \00m\00u\00s\00t\00 \00b\00e\00 \00b\00e\00t\00w\00e\00e\00n\00 \002\00 \00a\00n\00d\00 \003\006\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1020) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00u\00t\00i\00l\00/\00n\00u\00m\00b\00e\00r\00.\00t\00s\00\00\00\00\00\00\00")
+ (data (i32.const 1084) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\000\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1116) "0\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\00")
+ (data (i32.const 1516) "\1c\04\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\04\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\000\00a\000\00b\000\00c\000\00d\000\00e\000\00f\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\001\00a\001\00b\001\00c\001\00d\001\00e\001\00f\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\002\00a\002\00b\002\00c\002\00d\002\00e\002\00f\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\003\00a\003\00b\003\00c\003\00d\003\00e\003\00f\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\004\00a\004\00b\004\00c\004\00d\004\00e\004\00f\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\005\00a\005\00b\005\00c\005\00d\005\00e\005\00f\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\006\00a\006\00b\006\00c\006\00d\006\00e\006\00f\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\007\00a\007\00b\007\00c\007\00d\007\00e\007\00f\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\008\00a\008\00b\008\00c\008\00d\008\00e\008\00f\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\009\00a\009\00b\009\00c\009\00d\009\00e\009\00f\00a\000\00a\001\00a\002\00a\003\00a\004\00a\005\00a\006\00a\007\00a\008\00a\009\00a\00a\00a\00b\00a\00c\00a\00d\00a\00e\00a\00f\00b\000\00b\001\00b\002\00b\003\00b\004\00b\005\00b\006\00b\007\00b\008\00b\009\00b\00a\00b\00b\00b\00c\00b\00d\00b\00e\00b\00f\00c\000\00c\001\00c\002\00c\003\00c\004\00c\005\00c\006\00c\007\00c\008\00c\009\00c\00a\00c\00b\00c\00c\00c\00d\00c\00e\00c\00f\00d\000\00d\001\00d\002\00d\003\00d\004\00d\005\00d\006\00d\007\00d\008\00d\009\00d\00a\00d\00b\00d\00c\00d\00d\00d\00e\00d\00f\00e\000\00e\001\00e\002\00e\003\00e\004\00e\005\00e\006\00e\007\00e\008\00e\009\00e\00a\00e\00b\00e\00c\00e\00d\00e\00e\00e\00f\00f\000\00f\001\00f\002\00f\003\00f\004\00f\005\00f\006\00f\007\00f\008\00f\009\00f\00a\00f\00b\00f\00c\00f\00d\00f\00e\00f\00f\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2572) "\\\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00H\00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\00\00\00\00\00")
+ (data (i32.const 2668) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2796) "\1c\00\00\00\00\00\00\00\00\00\00\00\11\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2828) "l\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\\\00\00\00~\00l\00i\00b\00/\00a\00s\00-\00p\00r\00o\00t\00o\00/\00a\00s\00s\00e\00m\00b\00l\00y\00/\00i\00n\00t\00e\00r\00n\00a\00l\00/\00F\00i\00x\00e\00d\00R\00e\00a\00d\00e\00r\00.\00t\00s\00")
+ (data (i32.const 2940) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1c\00\00\00~\00l\00i\00b\00/\00s\00t\00r\00i\00n\00g\00.\00t\00s\00")
+ (data (i32.const 2988) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00w\00i\00r\00e\00 \00t\00y\00p\00e\00 \00\00\00\00\00\00\00\00\00")
+ (data (i32.const 3052) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00U\00n\00p\00a\00i\00r\00e\00d\00 \00s\00u\00r\00r\00o\00g\00a\00t\00e\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 3120) "\12\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02\01\00\00\02\t\00\00A\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\04A\00\00\00\00\00\00")
+ (table $0 3 3 funcref)
+ (elem $0 (i32.const 1) $assembly/proto/Ethereum/EthereumLog.decode $assembly/proto/EvmLog/EVMLog.encode)
+ (export "transform" (func $assembly/index/transform))
  (export "allocate" (func $assembly/index/allocate))
  (export "myAbort" (func $assembly/index/myAbort))
- (export "__new" (func $~lib/rt/itcms/__new))
- (export "__pin" (func $~lib/rt/itcms/__pin))
- (export "__unpin" (func $~lib/rt/itcms/__unpin))
- (export "__collect" (func $~lib/rt/itcms/__collect))
- (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "memory" (memory $0))
- (export "transform" (func $export:assembly/index/transform))
  (start $~start)
  (func $assembly/index/myAbort (type $i32_i32_i32_i32_=>_none) (param $message i32) (param $fileName i32) (param $line i32) (param $column i32)
   nop
@@ -2512,6 +2493,37 @@
  (func $start:assembly/proto/Ethereum (type $none_=>_none)
   call $start:~lib/as-proto/assembly/index
  )
+ (func $start:assembly/index (type $none_=>_none)
+  call $start:assembly/proto/Ethereum
+ )
+ (func $~lib/typedarray/Uint8Array#__set (type $i32_i32_i32_=>_none) (param $this i32) (param $index i32) (param $value i32)
+  local.get $index
+  local.get $this
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 640
+   i32.const 178
+   i32.const 45
+   call $assembly/index/myAbort
+   unreachable
+  end
+  local.get $this
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $index
+  i32.add
+  local.get $value
+  i32.store8 $0
+ )
+ (func $~lib/as-proto/assembly/Reader/Reader#get:end (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0 offset=4
+ )
+ (func $~lib/as-proto/assembly/Reader/Reader#get:ptr (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0
+ )
  (func $assembly/proto/Ethereum/EthereumLog#set:index (type $i32_i32_=>_none) (param $this i32) (param $index i32)
   local.get $this
   local.get $index
@@ -2572,42 +2584,14 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $~lib/as-proto/assembly/Writer/Writer#uint32 (type $i32_i32_=>_none) (param $this i32) (param $value i32)
+ (func $~lib/as-proto/assembly/Reader/Reader#uint32 (type $i32_=>_i32) (param $this i32) (result i32)
   unreachable
  )
- (func $assembly/proto/Ethereum/EthereumLog#get:index (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0
- )
- (func $assembly/proto/Ethereum/EthereumLog#get:transactionHash (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=4
- )
- (func $~lib/as-proto/assembly/Writer/Writer#string (type $i32_i32_=>_none) (param $this i32) (param $value i32)
+ (func $~lib/as-proto/assembly/Reader/Reader#string (type $i32_=>_i32) (param $this i32) (result i32)
   unreachable
  )
- (func $assembly/proto/Ethereum/EthereumLog#get:transactionIndex (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=8
- )
- (func $assembly/proto/Ethereum/EthereumLog#get:blockHash (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=12
- )
- (func $assembly/proto/Ethereum/EthereumLog#get:blockNumber (type $i32_=>_i64) (param $this i32) (result i64)
-  local.get $this
-  i64.load $0 offset=16
- )
- (func $~lib/as-proto/assembly/Writer/Writer#uint64 (type $i32_i64_=>_none) (param $this i32) (param $value i64)
+ (func $~lib/as-proto/assembly/Reader/Reader#uint64 (type $i32_=>_i64) (param $this i32) (result i64)
   unreachable
- )
- (func $assembly/proto/Ethereum/EthereumLog#get:address (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=24
- )
- (func $assembly/proto/Ethereum/EthereumLog#get:data (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=28
  )
  (func $assembly/proto/Ethereum/EthereumLog#get:topics (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
@@ -2616,19 +2600,6 @@
  (func $~lib/array/Array<~lib/string/String>#get:length_ (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
   i32.load $0 offset=12
- )
- (func $~lib/array/Array<~lib/string/String>#get:length (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  call $~lib/array/Array<~lib/string/String>#get:length_
-  return
- )
- (func $~lib/array/Array<~lib/string/String>#get:dataStart (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=4
- )
- (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:pos (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=4
  )
  (func $~lib/arraybuffer/ArrayBufferView#get:buffer (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
@@ -2711,7 +2682,7 @@
    i32.gt_u
    if
     i32.const 528
-    i32.const 1744
+    i32.const 768
     i32.const 19
     i32.const 48
     call $assembly/index/myAbort
@@ -2780,71 +2751,9 @@
    i32.store $0 offset=8
   end
  )
- (func $~lib/array/Array<u32>#set:length_ (type $i32_i32_=>_none) (param $this i32) (param $length_ i32)
-  local.get $this
-  local.get $length_
-  i32.store $0 offset=12
- )
- (func $~lib/array/Array<u32>#set:length (type $i32_i32_=>_none) (param $this i32) (param $newLength i32)
-  local.get $this
-  local.get $newLength
-  i32.const 2
-  i32.const 0
-  call $~lib/array/ensureCapacity
-  local.get $this
-  local.get $newLength
-  call $~lib/array/Array<u32>#set:length_
- )
- (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlen (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=8
- )
- (func $~lib/array/Array<i32>#set:length_ (type $i32_i32_=>_none) (param $this i32) (param $length_ i32)
-  local.get $this
-  local.get $length_
-  i32.store $0 offset=12
- )
- (func $~lib/array/Array<i32>#set:length (type $i32_i32_=>_none) (param $this i32) (param $newLength i32)
-  local.get $this
-  local.get $newLength
-  i32.const 2
-  i32.const 0
-  call $~lib/array/ensureCapacity
-  local.get $this
-  local.get $newLength
-  call $~lib/array/Array<i32>#set:length_
- )
- (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlenidx (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=12
- )
- (func $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#finish (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:buf
-  return
- )
- (func $assembly/index/add (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)
-  local.get $a
-  local.get $b
-  i32.add
-  return
- )
- (func $~lib/as-proto/assembly/Reader/Reader#get:end (type $i32_=>_i32) (param $this i32) (result i32)
+ (func $~lib/array/Array<~lib/string/String>#get:dataStart (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
   i32.load $0 offset=4
- )
- (func $~lib/as-proto/assembly/Reader/Reader#get:ptr (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0
- )
- (func $~lib/as-proto/assembly/Reader/Reader#uint32 (type $i32_=>_i32) (param $this i32) (result i32)
-  unreachable
- )
- (func $~lib/as-proto/assembly/Reader/Reader#string (type $i32_=>_i32) (param $this i32) (result i32)
-  unreachable
- )
- (func $~lib/as-proto/assembly/Reader/Reader#uint64 (type $i32_=>_i64) (param $this i32) (result i64)
-  unreachable
  )
  (func $~lib/array/Array<~lib/string/String>#set:length_ (type $i32_i32_=>_none) (param $this i32) (param $length_ i32)
   local.get $this
@@ -2983,6 +2892,10 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
+ (func $assembly/proto/Ethereum/EthereumLog#get:blockNumber (type $i32_=>_i64) (param $this i32) (result i64)
+  local.get $this
+  i64.load $0 offset=16
+ )
  (func $~lib/util/number/decimalCount32 (type $i32_=>_i32) (param $value i32) (result i32)
   local.get $value
   i32.const 100000
@@ -3073,14 +2986,14 @@
     i32.const 100
     i32.rem_u
     local.set $d2
-    i32.const 2316
+    i32.const 1116
     local.get $d1
     i32.const 2
     i32.shl
     i32.add
     i64.load32_u $0
     local.set $digits1
-    i32.const 2316
+    i32.const 1116
     local.get $d2
     i32.const 2
     i32.shl
@@ -3123,7 +3036,7 @@
    i32.const 2
    i32.sub
    local.set $offset
-   i32.const 2316
+   i32.const 1116
    local.get $d1|10
    i32.const 2
    i32.shl
@@ -3146,7 +3059,7 @@
    i32.const 2
    i32.sub
    local.set $offset
-   i32.const 2316
+   i32.const 1116
    local.get $num
    i32.const 2
    i32.shl
@@ -3290,14 +3203,14 @@
     i32.const 100
     i32.rem_u
     local.set $c2
-    i32.const 2316
+    i32.const 1116
     local.get $c1
     i32.const 2
     i32.shl
     i32.add
     i64.load32_u $0
     local.set $digits1
-    i32.const 2316
+    i32.const 1116
     local.get $c2
     i32.const 2
     i32.shl
@@ -3319,14 +3232,14 @@
     i64.shl
     i64.or
     i64.store $0
-    i32.const 2316
+    i32.const 1116
     local.get $b1
     i32.const 2
     i32.shl
     i32.add
     i64.load32_u $0
     local.set $digits1
-    i32.const 2316
+    i32.const 1116
     local.get $b2
     i32.const 2
     i32.shl
@@ -3372,7 +3285,7 @@
     i32.const 1
     i32.shl
     i32.add
-    i32.const 2736
+    i32.const 1536
     local.get $num
     i32.wrap_i64
     i32.const 255
@@ -3394,7 +3307,7 @@
   i32.and
   if
    local.get $buffer
-   i32.const 2736
+   i32.const 1536
    local.get $num
    i32.wrap_i64
    i32.const 6
@@ -3517,7 +3430,7 @@
     i32.const 1
     i32.shl
     i32.add
-    i32.const 3792
+    i32.const 2592
     local.get $num
     local.get $mask
     i64.and
@@ -3551,7 +3464,7 @@
     i32.const 1
     i32.shl
     i32.add
-    i32.const 3792
+    i32.const 2592
     local.get $num
     local.get $q
     local.get $base
@@ -3577,6 +3490,10 @@
   local.get $radix
   call $~lib/util/number/utoa64
   return
+ )
+ (func $assembly/proto/Ethereum/EthereumLog#get:index (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0
  )
  (func $~lib/number/U32#toString (type $i32_i32_=>_i32) (param $this i32) (param $radix i32) (result i32)
   local.get $this
@@ -3641,9 +3558,24 @@
   call $~lib/util/string/joinStringArray
   return
  )
+ (func $assembly/proto/Ethereum/EthereumLog#get:address (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0 offset=24
+ )
+ (func $~lib/array/Array<~lib/string/String>#get:length (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  return
+ )
+ (func $~lib/as-proto/assembly/Writer/Writer#uint32 (type $i32_i32_=>_none) (param $this i32) (param $value i32)
+  unreachable
+ )
  (func $assembly/proto/EvmLog/EVMLog#get:id (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
   i32.load $0
+ )
+ (func $~lib/as-proto/assembly/Writer/Writer#string (type $i32_i32_=>_none) (param $this i32) (param $value i32)
+  unreachable
  )
  (func $assembly/proto/EvmLog/EVMLog#get:address (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
@@ -3652,6 +3584,9 @@
  (func $assembly/proto/EvmLog/EVMLog#get:blockHeight (type $i32_=>_i64) (param $this i32) (result i64)
   local.get $this
   i64.load $0 offset=8
+ )
+ (func $~lib/as-proto/assembly/Writer/Writer#uint64 (type $i32_i64_=>_none) (param $this i32) (param $value i64)
+  unreachable
  )
  (func $assembly/proto/EvmLog/EVMLog#get:topics0 (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
@@ -3669,119 +3604,1146 @@
   local.get $this
   i32.load $0 offset=28
  )
- (func $~lib/rt/itcms/__pin (type $i32_=>_i32) (param $ptr i32) (result i32)
-  (local $obj i32)
-  local.get $ptr
-  if
-   local.get $ptr
-   i32.const 20
-   i32.sub
-   local.set $obj
-   local.get $obj
-   call $~lib/rt/itcms/Object#get:color
-   i32.const 3
-   i32.eq
-   if
-    i32.const 3920
-    i32.const 96
-    i32.const 338
-    i32.const 7
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $obj
-   call $~lib/rt/itcms/Object#unlink
-   local.get $obj
-   global.get $~lib/rt/itcms/pinSpace
-   i32.const 3
-   call $~lib/rt/itcms/Object#linkTo
-  end
-  local.get $ptr
+ (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:pos (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0 offset=4
+ )
+ (func $~lib/array/Array<u32>#set:length_ (type $i32_i32_=>_none) (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store $0 offset=12
+ )
+ (func $~lib/array/Array<u32>#set:length (type $i32_i32_=>_none) (param $this i32) (param $newLength i32)
+  local.get $this
+  local.get $newLength
+  i32.const 2
+  i32.const 0
+  call $~lib/array/ensureCapacity
+  local.get $this
+  local.get $newLength
+  call $~lib/array/Array<u32>#set:length_
+ )
+ (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlen (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0 offset=8
+ )
+ (func $~lib/array/Array<i32>#set:length_ (type $i32_i32_=>_none) (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store $0 offset=12
+ )
+ (func $~lib/array/Array<i32>#set:length (type $i32_i32_=>_none) (param $this i32) (param $newLength i32)
+  local.get $this
+  local.get $newLength
+  i32.const 2
+  i32.const 0
+  call $~lib/array/ensureCapacity
+  local.get $this
+  local.get $newLength
+  call $~lib/array/Array<i32>#set:length_
+ )
+ (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlenidx (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.load $0 offset=12
+ )
+ (func $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#finish (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:buf
   return
  )
- (func $~lib/rt/itcms/__unpin (type $i32_=>_none) (param $ptr i32)
-  (local $obj i32)
-  local.get $ptr
-  i32.eqz
+ (func $~lib/typedarray/Uint8Array#get:length (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  return
+ )
+ (func $~lib/typedarray/Uint8Array#__get (type $i32_i32_=>_i32) (param $this i32) (param $index i32) (result i32)
+  local.get $index
+  local.get $this
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.ge_u
   if
-   return
-  end
-  local.get $ptr
-  i32.const 20
-  i32.sub
-  local.set $obj
-  local.get $obj
-  call $~lib/rt/itcms/Object#get:color
-  i32.const 3
-  i32.ne
-  if
-   i32.const 3984
-   i32.const 96
-   i32.const 352
-   i32.const 5
+   i32.const 224
+   i32.const 640
+   i32.const 167
+   i32.const 45
    call $assembly/index/myAbort
    unreachable
   end
-  global.get $~lib/rt/itcms/state
-  i32.const 1
+  local.get $this
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $index
+  i32.add
+  i32.load8_u $0
+  return
+ )
+ (func $~lib/memory/heap.alloc (type $i32_=>_i32) (param $size i32) (result i32)
+  local.get $size
+  call $~lib/rt/tlsf/__alloc
+  return
+ )
+ (func $assembly/index/allocate (type $i32_=>_i32) (param $size i32) (result i32)
+  local.get $size
+  call $~lib/memory/heap.alloc
+  return
+ )
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32 (type $i32_=>_i32) (param $this i32) (result i32)
+  (local $loaded i32)
+  (local $value i32)
+  (local $this|3 i32)
+  (local $step i32)
+  (local $ptr i32)
+  (local $this|6 i32)
+  (local $step|7 i32)
+  (local $ptr|8 i32)
+  (local $this|9 i32)
+  (local $step|10 i32)
+  (local $ptr|11 i32)
+  (local $this|12 i32)
+  (local $step|13 i32)
+  (local $ptr|14 i32)
+  (local $this|15 i32)
+  (local $step|16 i32)
+  (local $ptr|17 i32)
+  (local $this|18 i32)
+  (local $step|19 i32)
+  (local $ptr|20 i32)
+  (local $this|21 i32)
+  (local $step|22 i32)
+  (local $ptr|23 i32)
+  (local $this|24 i32)
+  (local $step|25 i32)
+  (local $ptr|26 i32)
+  (local $this|27 i32)
+  (local $step|28 i32)
+  (local $ptr|29 i32)
+  (local $this|30 i32)
+  (local $step|31 i32)
+  (local $ptr|32 i32)
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.0 (result i32)
+   local.get $this
+   local.set $this|3
+   i32.const 1
+   local.set $step
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr
+   local.get $this|3
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.0
+  end
+  i32.load8_u $0
+  local.tee $loaded
+  i32.const 127
+  i32.and
+  local.set $value
+  local.get $loaded
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.1 (result i32)
+   local.get $this
+   local.set $this|6
+   i32.const 1
+   local.set $step|7
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|8
+   local.get $this|6
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|7
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|8
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.1
+  end
+  i32.load8_u $0
+  local.tee $loaded
+  i32.const 127
+  i32.and
+  i32.const 7
+  i32.shl
+  i32.or
+  local.set $value
+  local.get $loaded
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.2 (result i32)
+   local.get $this
+   local.set $this|9
+   i32.const 1
+   local.set $step|10
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|11
+   local.get $this|9
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|10
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|11
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.2
+  end
+  i32.load8_u $0
+  local.tee $loaded
+  i32.const 127
+  i32.and
+  i32.const 14
+  i32.shl
+  i32.or
+  local.set $value
+  local.get $loaded
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.3 (result i32)
+   local.get $this
+   local.set $this|12
+   i32.const 1
+   local.set $step|13
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|14
+   local.get $this|12
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|13
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|14
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.3
+  end
+  i32.load8_u $0
+  local.tee $loaded
+  i32.const 127
+  i32.and
+  i32.const 21
+  i32.shl
+  i32.or
+  local.set $value
+  local.get $loaded
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.4 (result i32)
+   local.get $this
+   local.set $this|15
+   i32.const 1
+   local.set $step|16
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|17
+   local.get $this|15
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|16
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|17
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.4
+  end
+  i32.load8_u $0
+  local.tee $loaded
+  i32.const 15
+  i32.and
+  i32.const 28
+  i32.shl
+  i32.or
+  local.set $value
+  local.get $loaded
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.5 (result i32)
+   local.get $this
+   local.set $this|18
+   i32.const 1
+   local.set $step|19
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|20
+   local.get $this|18
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|19
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|20
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.5
+  end
+  i32.load8_u $0
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.6 (result i32)
+   local.get $this
+   local.set $this|21
+   i32.const 1
+   local.set $step|22
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|23
+   local.get $this|21
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|22
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|23
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.6
+  end
+  i32.load8_u $0
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.7 (result i32)
+   local.get $this
+   local.set $this|24
+   i32.const 1
+   local.set $step|25
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|26
+   local.get $this|24
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|25
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|26
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.7
+  end
+  i32.load8_u $0
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.8 (result i32)
+   local.get $this
+   local.set $this|27
+   i32.const 1
+   local.set $step|28
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|29
+   local.get $this|27
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|28
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|29
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.8
+  end
+  i32.load8_u $0
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.9 (result i32)
+   local.get $this
+   local.set $this|30
+   i32.const 1
+   local.set $step|31
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|32
+   local.get $this|30
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|31
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|32
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.9
+  end
+  i32.load8_u $0
+  i32.const 128
+  i32.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  return
+ )
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32 (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
+  return
+ )
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint64 (type $i32_=>_i64) (param $this i32) (result i64)
+  (local $loaded i64)
+  (local $value i64)
+  (local $this|3 i32)
+  (local $step i32)
+  (local $ptr i32)
+  (local $this|6 i32)
+  (local $step|7 i32)
+  (local $ptr|8 i32)
+  (local $this|9 i32)
+  (local $step|10 i32)
+  (local $ptr|11 i32)
+  (local $this|12 i32)
+  (local $step|13 i32)
+  (local $ptr|14 i32)
+  (local $this|15 i32)
+  (local $step|16 i32)
+  (local $ptr|17 i32)
+  (local $this|18 i32)
+  (local $step|19 i32)
+  (local $ptr|20 i32)
+  (local $this|21 i32)
+  (local $step|22 i32)
+  (local $ptr|23 i32)
+  (local $this|24 i32)
+  (local $step|25 i32)
+  (local $ptr|26 i32)
+  (local $this|27 i32)
+  (local $step|28 i32)
+  (local $ptr|29 i32)
+  (local $this|30 i32)
+  (local $step|31 i32)
+  (local $ptr|32 i32)
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.11 (result i32)
+   local.get $this
+   local.set $this|3
+   i32.const 1
+   local.set $step
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr
+   local.get $this|3
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|3
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.11
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.12 (result i32)
+   local.get $this
+   local.set $this|6
+   i32.const 1
+   local.set $step|7
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|8
+   local.get $this|6
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|7
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|6
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|8
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.12
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 7
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.13 (result i32)
+   local.get $this
+   local.set $this|9
+   i32.const 1
+   local.set $step|10
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|11
+   local.get $this|9
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|10
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|9
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|11
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.13
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 14
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.14 (result i32)
+   local.get $this
+   local.set $this|12
+   i32.const 1
+   local.set $step|13
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|14
+   local.get $this|12
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|13
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|12
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|14
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.14
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 21
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.15 (result i32)
+   local.get $this
+   local.set $this|15
+   i32.const 1
+   local.set $step|16
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|17
+   local.get $this|15
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|16
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|15
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|17
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.15
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 28
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.16 (result i32)
+   local.get $this
+   local.set $this|18
+   i32.const 1
+   local.set $step|19
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|20
+   local.get $this|18
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|19
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|18
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|20
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.16
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 35
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.17 (result i32)
+   local.get $this
+   local.set $this|21
+   i32.const 1
+   local.set $step|22
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|23
+   local.get $this|21
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|22
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|21
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|23
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.17
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 42
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.18 (result i32)
+   local.get $this
+   local.set $this|24
+   i32.const 1
+   local.set $step|25
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|26
+   local.get $this|24
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|25
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|24
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|26
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.18
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 49
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.19 (result i32)
+   local.get $this
+   local.set $this|27
+   i32.const 1
+   local.set $step|28
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|29
+   local.get $this|27
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|28
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|27
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|29
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.19
+  end
+  i64.load8_u $0
+  local.tee $loaded
+  i64.const 127
+  i64.and
+  i64.const 56
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $loaded
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $value
+   return
+  end
+  local.get $value
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.20 (result i32)
+   local.get $this
+   local.set $this|30
+   i32.const 1
+   local.set $step|31
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr|32
+   local.get $this|30
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step|31
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|30
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 2848
+    i32.const 210
+    i32.const 5
+    call $assembly/index/myAbort
+    unreachable
+   end
+   local.get $ptr|32
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.20
+  end
+  i64.load8_u $0
+  i64.const 1
+  i64.and
+  i64.const 63
+  i64.shl
+  i64.or
+  local.set $value
+  local.get $value
+  return
+ )
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint64 (type $i32_=>_i64) (param $this i32) (result i64)
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint64
+  return
+ )
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip (type $i32_i32_=>_none) (param $this i32) (param $length i32)
+  (local $this|2 i32)
+  (local $step i32)
+  (local $ptr i32)
+  (local $this|5 i32)
+  (local $step|6 i32)
+  (local $ptr|7 i32)
+  local.get $length
+  i32.const 0
   i32.eq
   if
-   local.get $obj
-   call $~lib/rt/itcms/Object#makeGray
-  else
-   local.get $obj
-   call $~lib/rt/itcms/Object#unlink
-   local.get $obj
-   global.get $~lib/rt/itcms/fromSpace
-   global.get $~lib/rt/itcms/white
-   call $~lib/rt/itcms/Object#linkTo
-  end
- )
- (func $~lib/rt/itcms/__collect (type $none_=>_none)
-  i32.const 0
-  drop
-  global.get $~lib/rt/itcms/state
-  i32.const 0
-  i32.gt_s
-  if
    loop $while-continue|0
-    global.get $~lib/rt/itcms/state
-    i32.const 0
-    i32.ne
+    block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.21 (result i32)
+     local.get $this
+     local.set $this|2
+     i32.const 1
+     local.set $step
+     local.get $this|2
+     call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+     local.set $ptr
+     local.get $this|2
+     local.get $this|2
+     call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+     local.get $step
+     i32.add
+     call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+     local.get $this|2
+     call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+     local.get $this|2
+     call $~lib/as-proto/assembly/Reader/Reader#get:end
+     i32.le_u
+     i32.eqz
+     if
+      i32.const 224
+      i32.const 2848
+      i32.const 210
+      i32.const 5
+      call $assembly/index/myAbort
+      unreachable
+     end
+     local.get $ptr
+     br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.21
+    end
+    i32.load8_u $0
+    i32.const 128
+    i32.and
     if
-     call $~lib/rt/itcms/step
-     drop
+     nop
      br $while-continue|0
     end
    end
-  end
-  call $~lib/rt/itcms/step
-  drop
-  loop $while-continue|1
-   global.get $~lib/rt/itcms/state
-   i32.const 0
-   i32.ne
-   if
-    call $~lib/rt/itcms/step
-    drop
-    br $while-continue|1
+  else
+   block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.22 (result i32)
+    local.get $this
+    local.set $this|5
+    local.get $length
+    local.set $step|6
+    local.get $this|5
+    call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+    local.set $ptr|7
+    local.get $this|5
+    local.get $this|5
+    call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+    local.get $step|6
+    i32.add
+    call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+    local.get $this|5
+    call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+    local.get $this|5
+    call $~lib/as-proto/assembly/Reader/Reader#get:end
+    i32.le_u
+    i32.eqz
+    if
+     i32.const 224
+     i32.const 2848
+     i32.const 210
+     i32.const 5
+     call $assembly/index/myAbort
+     unreachable
+    end
+    local.get $ptr|7
+    br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.22
    end
+   drop
   end
-  global.get $~lib/rt/itcms/total
-  i64.extend_i32_u
-  i32.const 200
-  i64.extend_i32_u
-  i64.mul
-  i64.const 100
-  i64.div_u
-  i32.wrap_i64
-  i32.const 1024
-  i32.add
-  global.set $~lib/rt/itcms/threshold
-  i32.const 0
-  drop
-  i32.const 0
-  drop
+ )
+ (func $~lib/number/I32#toString (type $i32_i32_=>_i32) (param $this i32) (param $radix i32) (result i32)
+  local.get $this
+  local.get $radix
+  call $~lib/util/number/itoa32
+  return
+ )
+ (func $~lib/string/String.__concat (type $i32_i32_=>_i32) (param $left i32) (param $right i32) (result i32)
+  local.get $left
+  local.get $right
+  call $~lib/string/String#concat
+  return
  )
  (func $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:ptr (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
@@ -3907,7 +4869,7 @@
   i32.ge_u
   if
    i32.const 224
-   i32.const 1744
+   i32.const 768
    i32.const 114
    i32.const 42
    call $assembly/index/myAbort
@@ -4109,8 +5071,8 @@
         i32.const 2
         i32.eq
         if
-         i32.const 4048
-         i32.const 4112
+         i32.const 3072
+         i32.const 2960
          i32.const 742
          i32.const 49
          call $assembly/index/myAbort
@@ -4460,1064 +5422,90 @@
   i32.add
   call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#set:len
  )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32 (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $loaded i32)
-  (local $value i32)
-  (local $this|3 i32)
-  (local $step i32)
-  (local $ptr i32)
-  (local $this|6 i32)
-  (local $step|7 i32)
-  (local $ptr|8 i32)
-  (local $this|9 i32)
-  (local $step|10 i32)
-  (local $ptr|11 i32)
-  (local $this|12 i32)
-  (local $step|13 i32)
-  (local $ptr|14 i32)
-  (local $this|15 i32)
-  (local $step|16 i32)
-  (local $ptr|17 i32)
-  (local $this|18 i32)
-  (local $step|19 i32)
-  (local $ptr|20 i32)
-  (local $this|21 i32)
-  (local $step|22 i32)
-  (local $ptr|23 i32)
-  (local $this|24 i32)
-  (local $step|25 i32)
-  (local $ptr|26 i32)
-  (local $this|27 i32)
-  (local $step|28 i32)
-  (local $ptr|29 i32)
-  (local $this|30 i32)
-  (local $step|31 i32)
-  (local $ptr|32 i32)
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.0 (result i32)
-   local.get $this
-   local.set $this|3
-   i32.const 1
-   local.set $step
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr
-   local.get $this|3
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
+ (func $~lib/as-proto/assembly/Reader/Reader#uint32@override (type $i32_=>_i32) (param $0 i32) (result i32)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load $0
+    local.set $1
+    local.get $1
+    i32.const 10
+    i32.eq
+    br_if $case0
+    br $default
    end
-   local.get $ptr
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.0
-  end
-  i32.load8_u $0
-  local.tee $loaded
-  i32.const 127
-  i32.and
-  local.set $value
-  local.get $loaded
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
+   local.get $0
+   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32
    return
   end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.1 (result i32)
-   local.get $this
-   local.set $this|6
-   i32.const 1
-   local.set $step|7
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|8
-   local.get $this|6
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|7
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|8
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.1
-  end
-  i32.load8_u $0
-  local.tee $loaded
-  i32.const 127
-  i32.and
-  i32.const 7
-  i32.shl
-  i32.or
-  local.set $value
-  local.get $loaded
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.2 (result i32)
-   local.get $this
-   local.set $this|9
-   i32.const 1
-   local.set $step|10
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|11
-   local.get $this|9
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|10
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|11
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.2
-  end
-  i32.load8_u $0
-  local.tee $loaded
-  i32.const 127
-  i32.and
-  i32.const 14
-  i32.shl
-  i32.or
-  local.set $value
-  local.get $loaded
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.3 (result i32)
-   local.get $this
-   local.set $this|12
-   i32.const 1
-   local.set $step|13
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|14
-   local.get $this|12
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|13
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|14
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.3
-  end
-  i32.load8_u $0
-  local.tee $loaded
-  i32.const 127
-  i32.and
-  i32.const 21
-  i32.shl
-  i32.or
-  local.set $value
-  local.get $loaded
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.4 (result i32)
-   local.get $this
-   local.set $this|15
-   i32.const 1
-   local.set $step|16
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|17
-   local.get $this|15
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|16
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|17
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.4
-  end
-  i32.load8_u $0
-  local.tee $loaded
-  i32.const 15
-  i32.and
-  i32.const 28
-  i32.shl
-  i32.or
-  local.set $value
-  local.get $loaded
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.5 (result i32)
-   local.get $this
-   local.set $this|18
-   i32.const 1
-   local.set $step|19
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|20
-   local.get $this|18
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|19
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|20
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.5
-  end
-  i32.load8_u $0
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.6 (result i32)
-   local.get $this
-   local.set $this|21
-   i32.const 1
-   local.set $step|22
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|23
-   local.get $this|21
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|22
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|23
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.6
-  end
-  i32.load8_u $0
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.7 (result i32)
-   local.get $this
-   local.set $this|24
-   i32.const 1
-   local.set $step|25
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|26
-   local.get $this|24
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|25
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|26
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.7
-  end
-  i32.load8_u $0
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.8 (result i32)
-   local.get $this
-   local.set $this|27
-   i32.const 1
-   local.set $step|28
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|29
-   local.get $this|27
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|28
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|29
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.8
-  end
-  i32.load8_u $0
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.9 (result i32)
-   local.get $this
-   local.set $this|30
-   i32.const 1
-   local.set $step|31
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|32
-   local.get $this|30
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|31
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|32
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.9
-  end
-  i32.load8_u $0
-  i32.const 128
-  i32.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  return
+  unreachable
  )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32 (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
-  return
+ (func $~lib/as-proto/assembly/Reader/Reader#string@override (type $i32_=>_i32) (param $0 i32) (result i32)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load $0
+    local.set $1
+    local.get $1
+    i32.const 10
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#string
+   return
+  end
+  unreachable
  )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint64 (type $i32_=>_i64) (param $this i32) (result i64)
-  (local $loaded i64)
-  (local $value i64)
-  (local $this|3 i32)
-  (local $step i32)
-  (local $ptr i32)
-  (local $this|6 i32)
-  (local $step|7 i32)
-  (local $ptr|8 i32)
-  (local $this|9 i32)
-  (local $step|10 i32)
-  (local $ptr|11 i32)
-  (local $this|12 i32)
-  (local $step|13 i32)
-  (local $ptr|14 i32)
-  (local $this|15 i32)
-  (local $step|16 i32)
-  (local $ptr|17 i32)
-  (local $this|18 i32)
-  (local $step|19 i32)
-  (local $ptr|20 i32)
-  (local $this|21 i32)
-  (local $step|22 i32)
-  (local $ptr|23 i32)
-  (local $this|24 i32)
-  (local $step|25 i32)
-  (local $ptr|26 i32)
-  (local $this|27 i32)
-  (local $step|28 i32)
-  (local $ptr|29 i32)
-  (local $this|30 i32)
-  (local $step|31 i32)
-  (local $ptr|32 i32)
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.11 (result i32)
-   local.get $this
-   local.set $this|3
-   i32.const 1
-   local.set $step
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr
-   local.get $this|3
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|3
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
+ (func $~lib/as-proto/assembly/Reader/Reader#uint64@override (type $i32_=>_i64) (param $0 i32) (result i64)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load $0
+    local.set $1
+    local.get $1
+    i32.const 10
+    i32.eq
+    br_if $case0
+    br $default
    end
-   local.get $ptr
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.11
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
+   local.get $0
+   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint64
    return
   end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.12 (result i32)
-   local.get $this
-   local.set $this|6
-   i32.const 1
-   local.set $step|7
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|8
-   local.get $this|6
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|7
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|6
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|8
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.12
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 7
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.13 (result i32)
-   local.get $this
-   local.set $this|9
-   i32.const 1
-   local.set $step|10
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|11
-   local.get $this|9
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|10
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|9
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|11
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.13
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 14
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.14 (result i32)
-   local.get $this
-   local.set $this|12
-   i32.const 1
-   local.set $step|13
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|14
-   local.get $this|12
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|13
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|12
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|14
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.14
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 21
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.15 (result i32)
-   local.get $this
-   local.set $this|15
-   i32.const 1
-   local.set $step|16
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|17
-   local.get $this|15
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|16
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|15
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|17
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.15
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 28
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.16 (result i32)
-   local.get $this
-   local.set $this|18
-   i32.const 1
-   local.set $step|19
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|20
-   local.get $this|18
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|19
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|18
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|20
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.16
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 35
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.17 (result i32)
-   local.get $this
-   local.set $this|21
-   i32.const 1
-   local.set $step|22
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|23
-   local.get $this|21
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|22
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|21
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|23
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.17
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 42
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.18 (result i32)
-   local.get $this
-   local.set $this|24
-   i32.const 1
-   local.set $step|25
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|26
-   local.get $this|24
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|25
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|24
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|26
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.18
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 49
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.19 (result i32)
-   local.get $this
-   local.set $this|27
-   i32.const 1
-   local.set $step|28
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|29
-   local.get $this|27
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|28
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|27
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|29
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.19
-  end
-  i64.load8_u $0
-  local.tee $loaded
-  i64.const 127
-  i64.and
-  i64.const 56
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $loaded
-  i64.const 128
-  i64.lt_u
-  if
-   local.get $value
-   return
-  end
-  local.get $value
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.20 (result i32)
-   local.get $this
-   local.set $this|30
-   i32.const 1
-   local.set $step|31
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr|32
-   local.get $this|30
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step|31
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|30
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 4160
-    i32.const 210
-    i32.const 5
-    call $assembly/index/myAbort
-    unreachable
-   end
-   local.get $ptr|32
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.20
-  end
-  i64.load8_u $0
-  i64.const 1
-  i64.and
-  i64.const 63
-  i64.shl
-  i64.or
-  local.set $value
-  local.get $value
-  return
+  unreachable
  )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint64 (type $i32_=>_i64) (param $this i32) (result i64)
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint64
-  return
- )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip (type $i32_i32_=>_none) (param $this i32) (param $length i32)
-  (local $this|2 i32)
-  (local $step i32)
-  (local $ptr i32)
-  (local $this|5 i32)
-  (local $step|6 i32)
-  (local $ptr|7 i32)
-  local.get $length
-  i32.const 0
-  i32.eq
-  if
-   loop $while-continue|0
-    block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.21 (result i32)
-     local.get $this
-     local.set $this|2
-     i32.const 1
-     local.set $step
-     local.get $this|2
-     call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-     local.set $ptr
-     local.get $this|2
-     local.get $this|2
-     call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-     local.get $step
-     i32.add
-     call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-     local.get $this|2
-     call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-     local.get $this|2
-     call $~lib/as-proto/assembly/Reader/Reader#get:end
-     i32.le_u
-     i32.eqz
-     if
-      i32.const 224
-      i32.const 4160
-      i32.const 210
-      i32.const 5
-      call $assembly/index/myAbort
-      unreachable
-     end
-     local.get $ptr
-     br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.21
-    end
-    i32.load8_u $0
-    i32.const 128
-    i32.and
-    if
-     nop
-     br $while-continue|0
-    end
+ (func $~lib/as-proto/assembly/Reader/Reader#skipType@override (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load $0
+    local.set $2
+    local.get $2
+    i32.const 10
+    i32.eq
+    br_if $case0
+    br $default
    end
-  else
-   block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.22 (result i32)
-    local.get $this
-    local.set $this|5
-    local.get $length
-    local.set $step|6
-    local.get $this|5
-    call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-    local.set $ptr|7
-    local.get $this|5
-    local.get $this|5
-    call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-    local.get $step|6
-    i32.add
-    call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-    local.get $this|5
-    call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-    local.get $this|5
-    call $~lib/as-proto/assembly/Reader/Reader#get:end
-    i32.le_u
-    i32.eqz
-    if
-     i32.const 224
-     i32.const 4160
-     i32.const 210
-     i32.const 5
-     call $assembly/index/myAbort
-     unreachable
-    end
-    local.get $ptr|7
-    br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.22
-   end
-   drop
+   local.get $0
+   local.get $1
+   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skipType
+   return
   end
- )
- (func $~lib/number/I32#toString (type $i32_i32_=>_i32) (param $this i32) (param $radix i32) (result i32)
-  local.get $this
-  local.get $radix
-  call $~lib/util/number/itoa32
-  return
- )
- (func $~lib/string/String.__concat (type $i32_i32_=>_i32) (param $left i32) (param $right i32) (result i32)
-  local.get $left
-  local.get $right
-  call $~lib/string/String#concat
-  return
+  unreachable
  )
  (func $~lib/as-proto/assembly/Writer/Writer#uint32@override (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -5615,132 +5603,27 @@
   end
   unreachable
  )
- (func $~lib/as-proto/assembly/Reader/Reader#uint32@override (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  block $default
-   block $case0
-    local.get $0
-    i32.const 8
-    i32.sub
-    i32.load $0
-    local.set $1
-    local.get $1
-    i32.const 10
-    i32.eq
-    br_if $case0
-    br $default
-   end
-   local.get $0
-   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32
-   return
-  end
-  unreachable
- )
- (func $~lib/as-proto/assembly/Reader/Reader#string@override (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  block $default
-   block $case0
-    local.get $0
-    i32.const 8
-    i32.sub
-    i32.load $0
-    local.set $1
-    local.get $1
-    i32.const 10
-    i32.eq
-    br_if $case0
-    br $default
-   end
-   local.get $0
-   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#string
-   return
-  end
-  unreachable
- )
- (func $~lib/as-proto/assembly/Reader/Reader#uint64@override (type $i32_=>_i64) (param $0 i32) (result i64)
-  (local $1 i32)
-  block $default
-   block $case0
-    local.get $0
-    i32.const 8
-    i32.sub
-    i32.load $0
-    local.set $1
-    local.get $1
-    i32.const 10
-    i32.eq
-    br_if $case0
-    br $default
-   end
-   local.get $0
-   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint64
-   return
-  end
-  unreachable
- )
- (func $~lib/as-proto/assembly/Reader/Reader#skipType@override (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  block $default
-   block $case0
-    local.get $0
-    i32.const 8
-    i32.sub
-    i32.load $0
-    local.set $2
-    local.get $2
-    i32.const 10
-    i32.eq
-    br_if $case0
-    br $default
-   end
-   local.get $0
-   local.get $1
-   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skipType
-   return
-  end
-  unreachable
- )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
-  global.get $assembly/index/inputMessage
-  local.tee $1
-  if
-   local.get $1
-   local.get $0
-   call $~lib/rt/itcms/__visit
-  end
-  global.get $assembly/index/encodedArray
-  local.tee $1
-  if
-   local.get $1
-   local.get $0
-   call $~lib/rt/itcms/__visit
-  end
   i32.const 224
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 528
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 1792
+  i32.const 2688
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 32
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 3920
+  i32.const 3072
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 3984
+  i32.const 1536
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 4048
-  local.get $0
-  call $~lib/rt/itcms/__visit
-  i32.const 2736
-  local.get $0
-  call $~lib/rt/itcms/__visit
-  i32.const 3792
+  i32.const 2592
   local.get $0
   call $~lib/rt/itcms/__visit
   global.get $~lib/as-proto/assembly/Protobuf/WRITER
@@ -5996,24 +5879,6 @@
   local.get $1
   call $~lib/array/Array<~lib/string/String>#__visit
  )
- (func $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>#get:_env (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=4
- )
- (func $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>#__visit (type $i32_i32_=>_none) (param $this i32) (param $cookie i32)
-  local.get $this
-  call $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>#get:_env
-  local.get $cookie
-  call $~lib/rt/itcms/__visit
- )
- (func $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>~visit (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  call $~lib/object/Object~visit
-  local.get $0
-  local.get $1
-  call $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>#__visit
- )
  (func $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>assembly/proto/Ethereum/EthereumLog>#get:_env (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
   i32.load $0 offset=4
@@ -6155,85 +6020,79 @@
     block $~lib/staticarray/StaticArray<~lib/string/String>
      block $assembly/proto/EvmLog/EVMLog
       block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>assembly/proto/Ethereum/EthereumLog>
-       block $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>
-        block $~lib/array/Array<~lib/string/String>
-         block $assembly/proto/Ethereum/EthereumLog
-          block $~lib/as-proto/assembly/Reader/Reader
-           block $~lib/as-proto/assembly/internal/FixedReader/FixedReader
-            block $~lib/typedarray/Uint8Array
-             block $~lib/array/Array<i32>
-              block $~lib/array/Array<u32>
-               block $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer
-                block $~lib/as-proto/assembly/Writer/Writer
-                 block $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter
-                  block $~lib/arraybuffer/ArrayBufferView
-                   block $~lib/string/String
-                    block $~lib/arraybuffer/ArrayBuffer
-                     block $~lib/object/Object
-                      local.get $0
-                      i32.const 8
-                      i32.sub
-                      i32.load $0
-                      br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter $~lib/as-proto/assembly/Writer/Writer $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/assembly/internal/FixedReader/FixedReader $~lib/as-proto/assembly/Reader/Reader $assembly/proto/Ethereum/EthereumLog $~lib/array/Array<~lib/string/String> $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>assembly/proto/Ethereum/EthereumLog> $assembly/proto/EvmLog/EVMLog $~lib/staticarray/StaticArray<~lib/string/String> $~lib/function/Function<%28assembly/proto/EvmLog/EVMLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void> $invalid
-                     end
-                     return
+       block $~lib/array/Array<~lib/string/String>
+        block $assembly/proto/Ethereum/EthereumLog
+         block $~lib/as-proto/assembly/Reader/Reader
+          block $~lib/as-proto/assembly/internal/FixedReader/FixedReader
+           block $~lib/typedarray/Uint8Array
+            block $~lib/array/Array<i32>
+             block $~lib/array/Array<u32>
+              block $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer
+               block $~lib/as-proto/assembly/Writer/Writer
+                block $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter
+                 block $~lib/arraybuffer/ArrayBufferView
+                  block $~lib/string/String
+                   block $~lib/arraybuffer/ArrayBuffer
+                    block $~lib/object/Object
+                     local.get $0
+                     i32.const 8
+                     i32.sub
+                     i32.load $0
+                     br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter $~lib/as-proto/assembly/Writer/Writer $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/assembly/internal/FixedReader/FixedReader $~lib/as-proto/assembly/Reader/Reader $assembly/proto/Ethereum/EthereumLog $~lib/array/Array<~lib/string/String> $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>assembly/proto/Ethereum/EthereumLog> $assembly/proto/EvmLog/EVMLog $~lib/staticarray/StaticArray<~lib/string/String> $~lib/function/Function<%28assembly/proto/EvmLog/EVMLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void> $invalid
                     end
                     return
                    end
                    return
                   end
-                  local.get $0
-                  local.get $1
-                  call $~lib/arraybuffer/ArrayBufferView~visit
                   return
                  end
                  local.get $0
                  local.get $1
-                 call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter~visit
+                 call $~lib/arraybuffer/ArrayBufferView~visit
                  return
                 end
+                local.get $0
+                local.get $1
+                call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter~visit
                 return
                end
-               local.get $0
-               local.get $1
-               call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer~visit
                return
               end
               local.get $0
               local.get $1
-              call $~lib/array/Array<u32>~visit
+              call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer~visit
               return
              end
              local.get $0
              local.get $1
-             call $~lib/array/Array<i32>~visit
+             call $~lib/array/Array<u32>~visit
              return
             end
             local.get $0
             local.get $1
-            call $~lib/typedarray/Uint8Array~visit
+            call $~lib/array/Array<i32>~visit
             return
            end
            local.get $0
            local.get $1
-           call $~lib/as-proto/assembly/internal/FixedReader/FixedReader~visit
+           call $~lib/typedarray/Uint8Array~visit
            return
           end
+          local.get $0
+          local.get $1
+          call $~lib/as-proto/assembly/internal/FixedReader/FixedReader~visit
           return
          end
-         local.get $0
-         local.get $1
-         call $assembly/proto/Ethereum/EthereumLog~visit
          return
         end
         local.get $0
         local.get $1
-        call $~lib/array/Array<~lib/string/String>~visit
+        call $assembly/proto/Ethereum/EthereumLog~visit
         return
        end
        local.get $0
        local.get $1
-       call $~lib/function/Function<%28assembly/proto/Ethereum/EthereumLog%2C~lib/as-proto/assembly/Writer/Writer%29=>void>~visit
+       call $~lib/array/Array<~lib/string/String>~visit
        return
       end
       local.get $0
@@ -6266,8 +6125,8 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 37200
-   i32.const 37248
+   i32.const 35984
+   i32.const 36032
    i32.const 1
    i32.const 1
    call $assembly/index/myAbort
@@ -6501,389 +6360,6 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $assembly/proto/Ethereum/EthereumLog.encode (type $i32_i32_=>_none) (param $message i32) (param $writer i32)
-  (local $topics i32)
-  (local $i i32)
-  (local $4 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  local.get $writer
-  i32.const 8
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:index
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  i32.const 18
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:transactionHash
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store $0
-  local.get $4
-  call $~lib/as-proto/assembly/Writer/Writer#string@override
-  local.get $writer
-  i32.const 24
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:transactionIndex
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  i32.const 34
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:blockHash
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store $0
-  local.get $4
-  call $~lib/as-proto/assembly/Writer/Writer#string@override
-  local.get $writer
-  i32.const 40
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:blockNumber
-  call $~lib/as-proto/assembly/Writer/Writer#uint64@override
-  local.get $writer
-  i32.const 50
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:address
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store $0
-  local.get $4
-  call $~lib/as-proto/assembly/Writer/Writer#string@override
-  local.get $writer
-  i32.const 58
-  call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-  local.get $writer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:data
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store $0
-  local.get $4
-  call $~lib/as-proto/assembly/Writer/Writer#string@override
-  global.get $~lib/memory/__stack_pointer
-  local.get $message
-  call $assembly/proto/Ethereum/EthereumLog#get:topics
-  local.tee $topics
-  i32.store $0 offset=4
-  local.get $topics
-  call $~lib/array/Array<~lib/string/String>#get:length
-  i32.const 0
-  i32.ne
-  if
-   i32.const 0
-   local.set $i
-   loop $for-loop|0
-    local.get $i
-    local.get $topics
-    call $~lib/array/Array<~lib/string/String>#get:length
-    i32.lt_s
-    if
-     local.get $writer
-     i32.const 66
-     call $~lib/as-proto/assembly/Writer/Writer#uint32@override
-     local.get $writer
-     local.get $topics
-     local.get $i
-     call $~lib/array/Array<~lib/string/String>#__get
-     local.set $4
-     global.get $~lib/memory/__stack_pointer
-     local.get $4
-     i32.store $0
-     local.get $4
-     call $~lib/as-proto/assembly/Writer/Writer#string@override
-     local.get $i
-     i32.const 1
-     i32.add
-     local.set $i
-     br $for-loop|0
-    end
-   end
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#reset (type $i32_=>_none) (param $this i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.const 0
-  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#set:len
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:pos
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  i32.const 0
-  call $~lib/array/Array<u32>#set:length
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlen
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  i32.const 0
-  call $~lib/array/Array<i32>#set:length
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlenidx
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  i32.const 0
-  call $~lib/array/Array<i32>#set:length
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#reset (type $i32_=>_none) (param $this i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  local.get $this
-  i32.const 0
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:sizer
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:len
-  call $~lib/typedarray/Uint8Array#constructor
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#set:buf
-  local.get $this
-  local.get $this
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:buf
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0 offset=4
-  local.get $1
-  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#set:ptr
-  local.get $this
-  i32.const 0
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#set:varlenidx
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/as-proto/assembly/Protobuf/Protobuf.encode<assembly/proto/Ethereum/EthereumLog> (type $i32_i32_=>_i32) (param $message i32) (param $encoder i32) (result i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  global.get $~lib/as-proto/assembly/Protobuf/WRITER
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=4
-  local.get $2
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:sizer
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#reset
-  local.get $message
-  global.get $~lib/as-proto/assembly/Protobuf/WRITER
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=4
-  local.get $2
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:sizer
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 2
-  global.set $~argumentsLength
-  local.get $encoder
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_none)
-  global.get $~lib/as-proto/assembly/Protobuf/WRITER
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#reset
-  local.get $message
-  global.get $~lib/as-proto/assembly/Protobuf/WRITER
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 2
-  global.set $~argumentsLength
-  local.get $encoder
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_none)
-  global.get $~lib/as-proto/assembly/Protobuf/WRITER
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#finish
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $2
-  return
- )
- (func $assembly/proto/Ethereum/encodeEthereumLog (type $i32_=>_i32) (param $message i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $message
-  i32.const 1920
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  call $~lib/as-proto/assembly/Protobuf/Protobuf.encode<assembly/proto/Ethereum/EthereumLog>
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
-  return
- )
- (func $start:assembly/index (type $none_=>_none)
-  (local $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 24
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 24
-  memory.fill $0
-  call $start:assembly/proto/Ethereum
-  i32.const 0
-  i32.const 57
-  i32.const 640
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  i32.const 36
-  i32.const 800
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=4
-  local.get $2
-  i64.const 15937607
-  i32.const 960
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 1072
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 3
-  i32.const 2
-  i32.const 13
-  i32.const 1712
-  call $~lib/rt/__newArray
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=16
-  local.get $2
-  call $assembly/proto/Ethereum/EthereumLog#constructor
-  global.set $assembly/index/inputMessage
-  global.get $assembly/index/inputMessage
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=20
-  local.get $2
-  call $assembly/proto/Ethereum/encodeEthereumLog
-  global.set $assembly/index/encodedArray
-  global.get $~lib/memory/__stack_pointer
-  i32.const 24
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
  (func $assembly/proto/Ethereum/EthereumLog.decode (type $i32_i32_=>_i32) (param $reader i32) (param $length i32) (result i32)
   (local $end i32)
   (local $message i32)
@@ -6915,27 +6391,27 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.const 0
-  i32.const 1952
+  i32.const 704
   local.set $6
   global.get $~lib/memory/__stack_pointer
   local.get $6
   i32.store $0
   local.get $6
   i32.const 0
-  i32.const 1952
+  i32.const 704
   local.set $6
   global.get $~lib/memory/__stack_pointer
   local.get $6
   i32.store $0 offset=4
   local.get $6
   i64.const 0
-  i32.const 1952
+  i32.const 704
   local.set $6
   global.get $~lib/memory/__stack_pointer
   local.get $6
   i32.store $0 offset=8
   local.get $6
-  i32.const 1952
+  i32.const 704
   local.set $6
   global.get $~lib/memory/__stack_pointer
   local.get $6
@@ -7152,7 +6628,7 @@
   i32.const 0
   i32.store $0
   local.get $buffer
-  i32.const 2016
+  i32.const 816
   local.set $1
   global.get $~lib/memory/__stack_pointer
   local.get $1
@@ -7264,6 +6740,96 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#reset (type $i32_=>_none) (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  local.get $this
+  i32.const 0
+  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#set:len
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:pos
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  i32.const 0
+  call $~lib/array/Array<u32>#set:length
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlen
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  i32.const 0
+  call $~lib/array/Array<i32>#set:length
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:varlenidx
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  i32.const 0
+  call $~lib/array/Array<i32>#set:length
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#reset (type $i32_=>_none) (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store $0
+  local.get $this
+  i32.const 0
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:sizer
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#get:len
+  call $~lib/typedarray/Uint8Array#constructor
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#set:buf
+  local.get $this
+  local.get $this
+  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#get:buf
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0 offset=4
+  local.get $1
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#set:ptr
+  local.get $this
+  i32.const 0
+  call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#set:varlenidx
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $~lib/as-proto/assembly/Protobuf/Protobuf.encode<assembly/proto/EvmLog/EVMLog> (type $i32_i32_=>_i32) (param $message i32) (param $encoder i32) (result i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
@@ -7350,7 +6916,7 @@
   i32.const 0
   i32.store $0
   local.get $message
-  i32.const 3888
+  i32.const 2816
   local.set $1
   global.get $~lib/memory/__stack_pointer
   local.get $1
@@ -7365,26 +6931,64 @@
   local.get $1
   return
  )
- (func $assembly/index/transform (type $i32_=>_i32) (param $encodedArray i32) (result i32)
+ (func $assembly/index/transform (type $i32_i32_=>_i32) (param $ptr i32) (param $size i32) (result i32)
+  (local $data i32)
+  (local $i i32)
+  (local $k i32)
   (local $ethereumLog i32)
-  (local $2 i32)
-  (local $3 i32)
+  (local $6 i32)
+  (local $7 i32)
   (local $evmLog i32)
-  (local $5 i32)
+  (local $i|9 i32)
+  (local $10 i32)
+  (local $outputPtr i32)
+  (local $encodedData i32)
+  (local $i|13 i32)
+  (local $k|14 i32)
+  (local $15 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 40
+  i32.const 52
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 40
+  i32.const 52
   memory.fill $0
   global.get $~lib/memory/__stack_pointer
-  local.get $encodedArray
+  i32.const 0
+  local.get $size
+  call $~lib/typedarray/Uint8Array#constructor
+  local.tee $data
+  i32.store $0
+  i32.const 0
+  local.set $i
+  local.get $size
+  local.set $k
+  loop $for-loop|0
+   local.get $i
+   local.get $k
+   i32.lt_s
+   if
+    local.get $data
+    local.get $i
+    local.get $ptr
+    local.get $i
+    i32.add
+    i32.load8_u $0
+    call $~lib/typedarray/Uint8Array#__set
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $data
   call $assembly/proto/Ethereum/decodeEthereumLog
   local.tee $ethereumLog
-  i32.store $0
+  i32.store $0 offset=4
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   global.get $~lib/memory/__stack_pointer
@@ -7392,145 +6996,367 @@
   call $assembly/proto/Ethereum/EthereumLog#get:blockNumber
   i32.const 10
   call $~lib/number/U64#toString
-  local.tee $2
-  i32.store $0 offset=28
+  local.tee $6
+  i32.store $0 offset=32
   global.get $~lib/memory/__stack_pointer
   local.get $ethereumLog
   call $assembly/proto/Ethereum/EthereumLog#get:index
   i32.const 10
   call $~lib/number/U32#toString
-  local.tee $3
-  i32.store $0 offset=32
-  i32.const 2080
-  local.set $5
+  local.tee $7
+  i32.store $0 offset=36
+  i32.const 880
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=20
-  local.get $5
-  i32.const 0
-  local.get $2
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
-  i32.const 2080
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=20
-  local.get $5
-  i32.const 2
-  local.get $3
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
-  i32.const 2080
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=20
-  local.get $5
-  i32.const 1952
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $15
   i32.store $0 offset=24
-  local.get $5
-  call $~lib/staticarray/StaticArray<~lib/string/String>#join
-  local.set $5
+  local.get $15
+  i32.const 0
+  local.get $6
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
+  i32.const 880
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=4
-  local.get $5
+  local.get $15
+  i32.store $0 offset=24
+  local.get $15
+  i32.const 2
+  local.get $7
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
+  i32.const 880
+  local.set $15
+  global.get $~lib/memory/__stack_pointer
+  local.get $15
+  i32.store $0 offset=24
+  local.get $15
+  i32.const 704
+  local.set $15
+  global.get $~lib/memory/__stack_pointer
+  local.get $15
+  i32.store $0 offset=28
+  local.get $15
+  call $~lib/staticarray/StaticArray<~lib/string/String>#join
+  local.set $15
+  global.get $~lib/memory/__stack_pointer
+  local.get $15
+  i32.store $0 offset=8
+  local.get $15
   local.get $ethereumLog
   call $assembly/proto/Ethereum/EthereumLog#get:address
-  local.set $5
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=8
-  local.get $5
+  local.get $15
+  i32.store $0 offset=12
+  local.get $15
   local.get $ethereumLog
   call $assembly/proto/Ethereum/EthereumLog#get:blockNumber
-  local.get $ethereumLog
-  call $assembly/proto/Ethereum/EthereumLog#get:topics
-  local.set $5
+  i32.const 704
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=20
-  local.get $5
-  i32.const 0
-  call $~lib/array/Array<~lib/string/String>#__get
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=12
-  local.get $5
-  local.get $ethereumLog
-  call $assembly/proto/Ethereum/EthereumLog#get:topics
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=20
-  local.get $5
-  i32.const 1
-  call $~lib/array/Array<~lib/string/String>#__get
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $15
   i32.store $0 offset=16
-  local.get $5
-  local.get $ethereumLog
-  call $assembly/proto/Ethereum/EthereumLog#get:topics
-  local.set $5
+  local.get $15
+  i32.const 704
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $15
   i32.store $0 offset=20
-  local.get $5
-  i32.const 2
-  call $~lib/array/Array<~lib/string/String>#__get
-  local.set $5
+  local.get $15
+  i32.const 704
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store $0 offset=20
-  local.get $5
-  i32.const 1952
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $15
   i32.store $0 offset=24
-  local.get $5
+  local.get $15
+  i32.const 704
+  local.set $15
+  global.get $~lib/memory/__stack_pointer
+  local.get $15
+  i32.store $0 offset=28
+  local.get $15
   call $assembly/proto/EvmLog/EVMLog#constructor
   local.tee $evmLog
-  i32.store $0 offset=36
+  i32.store $0 offset=40
+  i32.const 0
+  local.set $i|9
+  loop $for-loop|1
+   local.get $i|9
+   local.get $ethereumLog
+   call $assembly/proto/Ethereum/EthereumLog#get:topics
+   local.set $15
+   global.get $~lib/memory/__stack_pointer
+   local.get $15
+   i32.store $0 offset=44
+   local.get $15
+   call $~lib/array/Array<~lib/string/String>#get:length
+   i32.lt_s
+   if
+    block $break|2
+     block $case3|2
+      block $case2|2
+       block $case1|2
+        block $case0|2
+         local.get $i|9
+         local.set $10
+         local.get $10
+         i32.const 0
+         i32.eq
+         br_if $case0|2
+         local.get $10
+         i32.const 1
+         i32.eq
+         br_if $case1|2
+         local.get $10
+         i32.const 2
+         i32.eq
+         br_if $case2|2
+         local.get $10
+         i32.const 3
+         i32.eq
+         br_if $case3|2
+         br $break|2
+        end
+        local.get $evmLog
+        local.get $ethereumLog
+        call $assembly/proto/Ethereum/EthereumLog#get:topics
+        local.set $15
+        global.get $~lib/memory/__stack_pointer
+        local.get $15
+        i32.store $0 offset=8
+        local.get $15
+        local.get $i|9
+        call $~lib/array/Array<~lib/string/String>#__get
+        local.set $15
+        global.get $~lib/memory/__stack_pointer
+        local.get $15
+        i32.store $0 offset=8
+        local.get $15
+        call $assembly/proto/EvmLog/EVMLog#set:topics0
+        br $break|2
+       end
+       local.get $evmLog
+       local.get $ethereumLog
+       call $assembly/proto/Ethereum/EthereumLog#get:topics
+       local.set $15
+       global.get $~lib/memory/__stack_pointer
+       local.get $15
+       i32.store $0 offset=8
+       local.get $15
+       local.get $i|9
+       call $~lib/array/Array<~lib/string/String>#__get
+       local.set $15
+       global.get $~lib/memory/__stack_pointer
+       local.get $15
+       i32.store $0 offset=8
+       local.get $15
+       call $assembly/proto/EvmLog/EVMLog#set:topics1
+       br $break|2
+      end
+      local.get $evmLog
+      local.get $ethereumLog
+      call $assembly/proto/Ethereum/EthereumLog#get:topics
+      local.set $15
+      global.get $~lib/memory/__stack_pointer
+      local.get $15
+      i32.store $0 offset=8
+      local.get $15
+      local.get $i|9
+      call $~lib/array/Array<~lib/string/String>#__get
+      local.set $15
+      global.get $~lib/memory/__stack_pointer
+      local.get $15
+      i32.store $0 offset=8
+      local.get $15
+      call $assembly/proto/EvmLog/EVMLog#set:topics2
+      br $break|2
+     end
+     local.get $evmLog
+     local.get $ethereumLog
+     call $assembly/proto/Ethereum/EthereumLog#get:topics
+     local.set $15
+     global.get $~lib/memory/__stack_pointer
+     local.get $15
+     i32.store $0 offset=8
+     local.get $15
+     local.get $i|9
+     call $~lib/array/Array<~lib/string/String>#__get
+     local.set $15
+     global.get $~lib/memory/__stack_pointer
+     local.get $15
+     i32.store $0 offset=8
+     local.get $15
+     call $assembly/proto/EvmLog/EVMLog#set:topics3
+     br $break|2
+    end
+    local.get $i|9
+    i32.const 1
+    i32.add
+    local.set $i|9
+    br $for-loop|1
+   end
+  end
+  local.get $ptr
+  local.get $size
+  i32.add
+  i32.const 1
+  i32.add
+  local.set $outputPtr
+  global.get $~lib/memory/__stack_pointer
   local.get $evmLog
   call $assembly/proto/EvmLog/encodeEVMLog
-  local.set $5
+  local.tee $encodedData
+  i32.store $0 offset=48
+  i32.const 0
+  local.set $i|13
+  local.get $encodedData
+  call $~lib/typedarray/Uint8Array#get:length
+  local.set $k|14
+  loop $for-loop|3
+   local.get $i|13
+   local.get $k|14
+   i32.lt_s
+   if
+    local.get $outputPtr
+    local.get $i|13
+    i32.add
+    local.get $encodedData
+    local.get $i|13
+    call $~lib/typedarray/Uint8Array#__get
+    i32.store8 $0
+    local.get $i|13
+    i32.const 1
+    i32.add
+    local.set $i|13
+    br $for-loop|3
+   end
+  end
+  local.get $encodedData
+  call $~lib/typedarray/Uint8Array#get:length
+  local.set $15
   global.get $~lib/memory/__stack_pointer
-  i32.const 40
+  i32.const 52
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $15
   return
  )
- (func $assembly/index/testTransform (type $none_=>_i32) (result i32)
-  (local $0 i32)
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skipType (type $i32_i32_=>_none) (param $this i32) (param $wireType i32)
+  (local $2 i32)
+  (local $this|3 i32)
+  (local $this|4 i32)
+  (local $5 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  global.get $assembly/index/encodedArray
-  local.set $0
+  i64.const 0
+  i64.store $0
+  block $break|0
+   block $case5|0
+    block $case4|0
+     block $case3|0
+      block $case2|0
+       block $case1|0
+        block $case0|0
+         local.get $wireType
+         local.set $2
+         local.get $2
+         global.get $~lib/as-proto/assembly/WireType/WireType.VARINT
+         i32.eq
+         br_if $case0|0
+         local.get $2
+         global.get $~lib/as-proto/assembly/WireType/WireType.FIXED_64
+         i32.eq
+         br_if $case1|0
+         local.get $2
+         global.get $~lib/as-proto/assembly/WireType/WireType.LENGTH_DELIMITED
+         i32.eq
+         br_if $case2|0
+         local.get $2
+         global.get $~lib/as-proto/assembly/WireType/WireType.START_GROUP
+         i32.eq
+         br_if $case3|0
+         local.get $2
+         global.get $~lib/as-proto/assembly/WireType/WireType.FIXED_32
+         i32.eq
+         br_if $case4|0
+         br $case5|0
+        end
+        local.get $this
+        i32.const 0
+        call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
+        br $break|0
+       end
+       local.get $this
+       i32.const 8
+       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
+       br $break|0
+      end
+      local.get $this
+      block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.1 (result i32)
+       local.get $this
+       local.set $this|3
+       local.get $this|3
+       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
+       br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.1
+      end
+      call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
+      br $break|0
+     end
+     loop $while-continue|1
+      block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.2 (result i32)
+       local.get $this
+       local.set $this|4
+       local.get $this|4
+       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
+       br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.2
+      end
+      i32.const 7
+      i32.and
+      local.tee $wireType
+      global.get $~lib/as-proto/assembly/WireType/WireType.END_GROUP
+      i32.ne
+      if
+       local.get $this
+       local.get $wireType
+       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skipType
+       br $while-continue|1
+      end
+     end
+     br $break|0
+    end
+    local.get $this
+    i32.const 4
+    call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
+    br $break|0
+   end
+   i32.const 3008
+   local.set $5
+   global.get $~lib/memory/__stack_pointer
+   local.get $5
+   i32.store $0
+   local.get $5
+   local.get $wireType
+   i32.const 10
+   call $~lib/number/I32#toString
+   local.set $5
+   global.get $~lib/memory/__stack_pointer
+   local.get $5
+   i32.store $0 offset=4
+   local.get $5
+   call $~lib/string/String.__concat
+   i32.const 2848
+   i32.const 131
+   i32.const 9
+   call $assembly/index/myAbort
+   unreachable
+  end
   global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
-  call $assembly/index/transform
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $0
-  return
  )
  (func $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter#string (type $i32_i32_=>_none) (param $this i32) (param $value i32)
   (local $this|2 i32)
@@ -7752,124 +7578,6 @@
   call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer#set:len
   global.get $~lib/memory/__stack_pointer
   i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skipType (type $i32_i32_=>_none) (param $this i32) (param $wireType i32)
-  (local $2 i32)
-  (local $this|3 i32)
-  (local $this|4 i32)
-  (local $5 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  block $break|0
-   block $case5|0
-    block $case4|0
-     block $case3|0
-      block $case2|0
-       block $case1|0
-        block $case0|0
-         local.get $wireType
-         local.set $2
-         local.get $2
-         global.get $~lib/as-proto/assembly/WireType/WireType.VARINT
-         i32.eq
-         br_if $case0|0
-         local.get $2
-         global.get $~lib/as-proto/assembly/WireType/WireType.FIXED_64
-         i32.eq
-         br_if $case1|0
-         local.get $2
-         global.get $~lib/as-proto/assembly/WireType/WireType.LENGTH_DELIMITED
-         i32.eq
-         br_if $case2|0
-         local.get $2
-         global.get $~lib/as-proto/assembly/WireType/WireType.START_GROUP
-         i32.eq
-         br_if $case3|0
-         local.get $2
-         global.get $~lib/as-proto/assembly/WireType/WireType.FIXED_32
-         i32.eq
-         br_if $case4|0
-         br $case5|0
-        end
-        local.get $this
-        i32.const 0
-        call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
-        br $break|0
-       end
-       local.get $this
-       i32.const 8
-       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
-       br $break|0
-      end
-      local.get $this
-      block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.1 (result i32)
-       local.get $this
-       local.set $this|3
-       local.get $this|3
-       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
-       br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.1
-      end
-      call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
-      br $break|0
-     end
-     loop $while-continue|1
-      block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.2 (result i32)
-       local.get $this
-       local.set $this|4
-       local.get $this|4
-       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
-       br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.2
-      end
-      i32.const 7
-      i32.and
-      local.tee $wireType
-      global.get $~lib/as-proto/assembly/WireType/WireType.END_GROUP
-      i32.ne
-      if
-       local.get $this
-       local.get $wireType
-       call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skipType
-       br $while-continue|1
-      end
-     end
-     br $break|0
-    end
-    local.get $this
-    i32.const 4
-    call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#skip
-    br $break|0
-   end
-   i32.const 4272
-   local.set $5
-   global.get $~lib/memory/__stack_pointer
-   local.get $5
-   i32.store $0
-   local.get $5
-   local.get $wireType
-   i32.const 10
-   call $~lib/number/I32#toString
-   local.set $5
-   global.get $~lib/memory/__stack_pointer
-   local.get $5
-   i32.store $0 offset=4
-   local.get $5
-   call $~lib/string/String.__concat
-   i32.const 4160
-   i32.const 131
-   i32.const 9
-   call $assembly/index/myAbort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -8260,63 +7968,6 @@
   global.set $~lib/memory/__stack_pointer
   local.get $9
  )
- (func $~lib/array/Array<~lib/string/String>#__get (type $i32_i32_=>_i32) (param $this i32) (param $index i32) (result i32)
-  (local $value i32)
-  (local $3 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $index
-  local.get $this
-  call $~lib/array/Array<~lib/string/String>#get:length_
-  i32.ge_u
-  if
-   i32.const 224
-   i32.const 1744
-   i32.const 114
-   i32.const 42
-   call $assembly/index/myAbort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $this
-  call $~lib/array/Array<~lib/string/String>#get:dataStart
-  local.get $index
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load $0
-  local.tee $value
-  i32.store $0
-  i32.const 1
-  drop
-  i32.const 0
-  i32.eqz
-  drop
-  local.get $value
-  i32.eqz
-  if
-   i32.const 1792
-   i32.const 1744
-   i32.const 118
-   i32.const 40
-   call $assembly/index/myAbort
-   unreachable
-  end
-  local.get $value
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $3
-  return
- )
  (func $assembly/proto/Ethereum/EthereumLog#constructor@varargs (type $i32_i32_i32_i32_i32_i64_i32_i32_i32_=>_i32) (param $this i32) (param $index i32) (param $transactionHash i32) (param $transactionIndex i32) (param $blockHash i32) (param $blockNumber i64) (param $address i32) (param $data i32) (param $topics i32) (result i32)
   (local $9 i32)
   (local $10 i32)
@@ -8349,7 +8000,7 @@
           local.set $index
          end
          global.get $~lib/memory/__stack_pointer
-         i32.const 1952
+         i32.const 704
          local.tee $transactionHash
          i32.store $0
         end
@@ -8357,7 +8008,7 @@
         local.set $transactionIndex
        end
        global.get $~lib/memory/__stack_pointer
-       i32.const 1952
+       i32.const 704
        local.tee $blockHash
        i32.store $0 offset=4
       end
@@ -8365,12 +8016,12 @@
       local.set $blockNumber
      end
      global.get $~lib/memory/__stack_pointer
-     i32.const 1952
+     i32.const 704
      local.tee $address
      i32.store $0 offset=8
     end
     global.get $~lib/memory/__stack_pointer
-    i32.const 1952
+    i32.const 704
     local.tee $data
     i32.store $0 offset=12
    end
@@ -8378,7 +8029,7 @@
    i32.const 0
    i32.const 2
    i32.const 13
-   i32.const 1984
+   i32.const 736
    call $~lib/rt/__newArray
    local.tee $topics
    i32.store $0 offset=16
@@ -8415,7 +8066,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 32
-   i32.const 16
+   i32.const 15
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store $0
@@ -8506,8 +8157,8 @@
    i32.gt_s
   end
   if
-   i32.const 2112
-   i32.const 2240
+   i32.const 912
+   i32.const 1040
    i32.const 401
    i32.const 5
    call $assembly/index/myAbort
@@ -8518,7 +8169,7 @@
   i64.ne
   i32.eqz
   if
-   i32.const 2304
+   i32.const 1104
    local.set $17
    global.get $~lib/memory/__stack_pointer
    i32.const 4
@@ -8688,8 +8339,8 @@
    i32.gt_s
   end
   if
-   i32.const 2112
-   i32.const 2240
+   i32.const 912
+   i32.const 1040
    i32.const 350
    i32.const 5
    call $assembly/index/myAbort
@@ -8698,7 +8349,7 @@
   local.get $value
   i32.eqz
   if
-   i32.const 2304
+   i32.const 1104
    local.set $12
    global.get $~lib/memory/__stack_pointer
    i32.const 4
@@ -8835,7 +8486,7 @@
   i32.const 0
   i32.lt_s
   if
-   i32.const 1952
+   i32.const 704
    local.set $13
    global.get $~lib/memory/__stack_pointer
    i32.const 12
@@ -8856,7 +8507,7 @@
    if (result i32)
     local.get $4
    else
-    i32.const 1952
+    i32.const 704
    end
    local.set $13
    global.get $~lib/memory/__stack_pointer
@@ -9014,8 +8665,8 @@
   local.get $13
   return
  )
- (func $~lib/arraybuffer/ArrayBuffer#constructor (type $i32_i32_=>_i32) (param $this i32) (param $length i32) (result i32)
-  (local $buffer i32)
+ (func $~lib/array/Array<~lib/string/String>#__get (type $i32_i32_=>_i32) (param $this i32) (param $index i32) (result i32)
+  (local $value i32)
   (local $3 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -9025,57 +8676,44 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.store $0
-  local.get $length
-  i32.const 1073741820
-  i32.gt_u
+  local.get $index
+  local.get $this
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  i32.ge_u
   if
-   i32.const 528
-   i32.const 576
-   i32.const 52
-   i32.const 43
+   i32.const 224
+   i32.const 768
+   i32.const 114
+   i32.const 42
    call $assembly/index/myAbort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.get $length
-  i32.const 1
-  call $~lib/rt/itcms/__new
-  local.tee $buffer
-  i32.store $0
+  local.get $this
+  call $~lib/array/Array<~lib/string/String>#get:dataStart
+  local.get $index
   i32.const 2
-  global.get $~lib/shared/runtime/Runtime.Incremental
-  i32.ne
-  drop
-  local.get $buffer
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.shl
   i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $3
-  return
- )
- (func $assembly/index/allocate (type $i32_=>_i32) (param $size i32) (result i32)
-  (local $buffer i32)
-  (local $ptr i32)
-  (local $3 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
+  i32.load $0
+  local.tee $value
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
+  i32.const 1
+  drop
   i32.const 0
-  local.get $size
-  call $~lib/arraybuffer/ArrayBuffer#constructor
-  local.tee $buffer
-  i32.store $0
-  local.get $buffer
-  local.set $ptr
-  local.get $ptr
+  i32.eqz
+  drop
+  local.get $value
+  i32.eqz
+  if
+   i32.const 2688
+   i32.const 768
+   i32.const 118
+   i32.const 40
+   call $assembly/index/myAbort
+   unreachable
+  end
+  local.get $value
   local.set $3
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -9138,7 +8776,7 @@
    i32.eqz
    if
     i32.const 224
-    i32.const 4160
+    i32.const 2848
     i32.const 210
     i32.const 5
     call $assembly/index/myAbort
@@ -9189,7 +8827,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 4112
+   i32.const 2960
    i32.const 770
    i32.const 7
    call $assembly/index/myAbort
@@ -9451,8 +9089,8 @@
    i32.gt_s
   end
   if
-   i32.const 2112
-   i32.const 2240
+   i32.const 912
+   i32.const 1040
    i32.const 373
    i32.const 5
    call $assembly/index/myAbort
@@ -9461,7 +9099,7 @@
   local.get $value
   i32.eqz
   if
-   i32.const 2304
+   i32.const 1104
    local.set $14
    global.get $~lib/memory/__stack_pointer
    i32.const 4
@@ -9632,7 +9270,7 @@
   i32.const 0
   i32.eq
   if
-   i32.const 1952
+   i32.const 704
    local.set $6
    global.get $~lib/memory/__stack_pointer
    i32.const 4
@@ -9665,24 +9303,5 @@
   global.set $~lib/memory/__stack_pointer
   local.get $6
   return
- )
- (func $export:assembly/index/transform (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
-  call $assembly/index/transform
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
  )
 )
